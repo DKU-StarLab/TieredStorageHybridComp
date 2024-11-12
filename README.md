@@ -3,13 +3,10 @@ This work is a scheme utilizing RocksDB, allowing users to store each of the lev
 
 ### Dependencies
 - Tiered Storage
-```
-This scheme can be used with the storage devices on the user machine with no customizations since the changes we made are limited to the application level.
-```
+-- This scheme can be used with the storage devices on the user machine with no customizations since the changes we made are limited to the application level.
+
 - Hybrid Compression
-```
-The following compression libraries should be linked. In case they aren't, they cannot be used in setting up the hybrid compression within levels and no compression will be used by default.
-```
+-- The following compression libraries should be linked. In case they aren't, they cannot be used in setting up the hybrid compression within levels and no compression will be used by default.
 
 ### Compilation
 
