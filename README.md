@@ -21,4 +21,25 @@ https://github.com/facebook/rocksdb/blob/main/INSTALL.md
 
 ```
 
+### Benchmarking
 
+- Setting up tiered storage
+  1. Create directories to hold the levels of the LSM-tree in their corresponding storage device.
+  2. Using the db_bench tool, specify the flags needed for tiered storage.
+- Run benchmark with db_bench using the flags for tiered storage along with other db_bench options
+  - use_tiered_storage - [default:0] [Possible values: 0 or 1]Boolean value which tells the LSM-tree if tiered storage will be used or not.
+  - tiered_storage_path - [default:empty] [Possible values: STRING] String value of the comma-separated storage paths.
+
+```
+Example:
+Storage paths:
+- /mnt/ssdoptane
+- /mnt/ssdnvme
+- /mnt/ssdsata
+- /mnt/hdd
+
+Run db_bench with flags use_tiered_storage and tiered_storage_path
+./db_bench --benchmarks=fillrandom --use_tiered_storage=1 --tiered_storage_path=/mnt/ssdoptane,/mnt/ssdnvme,/mnt/ssdsata
+
+This benchmark will store L0 in "/mnt/ssdoptane", L1 in "/mnt/ssdnvme", L2 in "/mnt/ssdsata", and the rest of the levels (L3 onwards) in "/mnt/hdd"
+```
