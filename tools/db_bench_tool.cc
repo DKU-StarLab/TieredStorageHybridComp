@@ -99,7 +99,10 @@
 #include <io.h>  // open/close
 #endif
 
-
+using GFLAGS_NAMESPACE::ParseCommandLineFlags;
+using GFLAGS_NAMESPACE::RegisterFlagValidator;
+using GFLAGS_NAMESPACE::SetUsageMessage;
+using GFLAGS_NAMESPACE::SetVersionString;
 
 DEFINE_string(
     benchmarks,
