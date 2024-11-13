@@ -590,9 +590,7 @@ DEFINE_double(compressed_secondary_cache_low_pri_pool_ratio, 0.0,
 DEFINE_string(compressed_secondary_cache_compression_type, "lz4",
               "The compression algorithm to use for large "
               "values stored in CompressedSecondaryCache.");
-static enum ROCKSDB_NAMESPACE::CompressionType
-    FLAGS_compressed_secondary_cache_compression_type_e =
-        ROCKSDB_NAMESPACE::kLZ4Compression;
+
 
 DEFINE_uint32(
     compressed_secondary_cache_compress_format_version, 2,
