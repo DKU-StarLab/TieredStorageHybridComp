@@ -4067,43 +4067,7 @@ class Benchmark {
 
     assert(db_.db == nullptr);
 
-    // kaloiii start
-    std::string last_used_tpath;
-    int xcounter = 0;
-    if(FLAGS_use_tiered_storage){
-      if(FLAGS_tiered_storage_path.length() < 1){
-        fprintf(stderr, "Invalid tiered storage path!\n");
-        exit(1);
-      } else {
-        std::istringstream xstream(FLAGS_tiered_storage_path);
-        std::string xtoken;
-        std::string tpaths[FLAGS_num_levels];
-        int xindex = 0;
-        long long tsize[FLAGS_num_levels];
-        long long xbaseSize =  1073741824;
-        while (getline(xstream, xtoken, ',')) {
-          if(xtoken!=""){
-            tpaths[xindex] = xtoken;
-            if(xindex==0) {
-              tsize[xindex] = 1 * xbaseSize;
-            } else if(xindex==1) {
-              tsize[xindex] = 10 * xbaseSize;
-            } else if(xindex==2) {
-              tsize[xindex] = 100 * xbaseSize;
-            } else {
-              tsize[xindex] = 500 * xbaseSize;
-            }
-            xindex++;
-          }
-        }
-        for (std::string mypath : tpaths) {
-          if(mypath!=""){
-            options.db_paths.push_back({ mypath, (uint64_t)tsize[xcounter] });
-            xcounter++;
-          }
-        }
-      }
-    } // kaloiii end
+    
 
     options.env = FLAGS_env;
     options.wal_dir = FLAGS_wal_dir;
