@@ -8643,7 +8643,12 @@ int db_bench_tool(int argc, char** argv) {
                                   ROCKSDB_NAMESPACE::Env::Priority::LOW);
 
   // Choose a location for the test database if none given with --db=<path>
-  
+  if (FLAGS_db.empty()) {
+    std::string default_db_path;
+    FLAGS_env->GetTestDirectory(&default_db_path);
+    default_db_path += "/dbbench";
+    FLAGS_db = default_db_path;
+  }
 
   if (FLAGS_backup_dir.empty()) {
     FLAGS_backup_dir = FLAGS_db + "/backup";
