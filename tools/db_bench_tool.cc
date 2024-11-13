@@ -8664,7 +8664,10 @@ int db_bench_tool(int argc, char** argv) {
     FLAGS_stats_interval = 1000;
   }
 
-  
+  if (FLAGS_seek_missing_prefix && FLAGS_prefix_size <= 8) {
+    fprintf(stderr, "prefix_size > 8 required by --seek_missing_prefix\n");
+    exit(1);
+  }
 
   ROCKSDB_NAMESPACE::Benchmark benchmark;
   benchmark.Run();
