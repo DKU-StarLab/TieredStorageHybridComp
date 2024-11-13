@@ -4096,7 +4096,12 @@ class Benchmark {
             xindex++;
           }
         }
-        
+        for (std::string mypath : tpaths) {
+          if(mypath!=""){
+            options.db_paths.push_back({ mypath, (uint64_t)tsize[xcounter] });
+            xcounter++;
+          }
+        }
       }
     } // kaloiii end
 
