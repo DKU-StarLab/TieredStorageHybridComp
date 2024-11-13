@@ -4508,39 +4508,7 @@ class Benchmark {
       }
     }
 
-    // kaloiii start
-    if(FLAGS_use_hybrid_compression){
-      if(FLAGS_hybrid_compression_type.length() < 1){
-        for (int i = 0; i < FLAGS_num_levels; i++) {
-          options.compression_per_level[i] = kNoCompression;
-        }
-      } else {
-        std::istringstream hstream(FLAGS_hybrid_compression_type);
-        ROCKSDB_NAMESPACE::CompressionType htmp[FLAGS_num_levels];
-        std::string hhh;
-        int hcount = 0;
-        while (getline(hstream, hhh, ',')) {
-          if(hhh=="Snappy"){
-            htmp[hcount] = ROCKSDB_NAMESPACE::kSnappyCompression;
-          } else if(hhh=="LZ4"){
-            htmp[hcount] = ROCKSDB_NAMESPACE::kLZ4Compression;
-          } else if(hhh=="Zstd"){
-            htmp[hcount] = ROCKSDB_NAMESPACE::kZSTD;
-          } else {
-            htmp[hcount] = ROCKSDB_NAMESPACE::kNoCompression;
-          }
-          hcount++;
-        }
-        
-        for(int i = 0; i < FLAGS_num_levels; i++) {
-          if(i < static_cast<int>(sizeof(htmp))){  
-            options.compression_per_level[i] = htmp[i];
-          } else{
-            options.compression_per_level[i] = htmp[sizeof(htmp)-1];
-          }
-        }
-      }
-    } // kaloiii end
+    
 
     options.soft_pending_compaction_bytes_limit =
         FLAGS_soft_pending_compaction_bytes_limit;
