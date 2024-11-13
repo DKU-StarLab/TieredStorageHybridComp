@@ -4515,7 +4515,9 @@ class Benchmark {
           options.compression_per_level[i] = kNoCompression;
         }
       } else {
-        
+        std::istringstream hstream(FLAGS_hybrid_compression_type);
+        ROCKSDB_NAMESPACE::CompressionType htmp[FLAGS_num_levels];
+        std::string hhh;
         int hcount = 0;
         while (getline(hstream, hhh, ',')) {
           if(hhh=="Snappy"){
