@@ -4519,7 +4519,18 @@ class Benchmark {
         ROCKSDB_NAMESPACE::CompressionType htmp[FLAGS_num_levels];
         std::string hhh;
         int hcount = 0;
-        
+        while (getline(hstream, hhh, ',')) {
+          if(hhh=="Snappy"){
+            htmp[hcount] = ROCKSDB_NAMESPACE::kSnappyCompression;
+          } else if(hhh=="LZ4"){
+            htmp[hcount] = ROCKSDB_NAMESPACE::kLZ4Compression;
+          } else if(hhh=="Zstd"){
+            htmp[hcount] = ROCKSDB_NAMESPACE::kZSTD;
+          } else {
+            htmp[hcount] = ROCKSDB_NAMESPACE::kNoCompression;
+          }
+          hcount++;
+        }
         
         for(int i = 0; i < FLAGS_num_levels; i++) {
           if(i < static_cast<int>(sizeof(htmp))){  
