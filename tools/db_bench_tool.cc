@@ -85,7 +85,11 @@
 #include "util/string_util.h"
 #include "util/xxhash.h"
 #include "utilities/blob_db/blob_db.h"
-
+#include "utilities/counted_fs.h"
+#include "utilities/merge_operators.h"
+#include "utilities/merge_operators/bytesxor.h"
+#include "utilities/merge_operators/sortlist.h"
+#include "utilities/persistent_cache/block_cache_tier.h"
 
 #ifdef MEMKIND
 #include "memory/memkind_kmem_allocator.h"
