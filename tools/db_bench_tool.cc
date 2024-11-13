@@ -432,7 +432,8 @@ DEFINE_bool(cost_write_buffer_to_cache, false,
 DEFINE_int64(arena_block_size, ROCKSDB_NAMESPACE::Options().arena_block_size,
              "The size, in bytes, of one block in arena memory allocation.");
 
-
+DEFINE_int64(write_buffer_size, ROCKSDB_NAMESPACE::Options().write_buffer_size,
+             "Number of bytes to buffer in memtable before compacting");
 
 DEFINE_int32(max_write_buffer_number,
              ROCKSDB_NAMESPACE::Options().max_write_buffer_number,
