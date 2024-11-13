@@ -1127,7 +1127,13 @@ DEFINE_bool(report_bg_io_stats, false,
 DEFINE_bool(use_stderr_info_logger, false,
             "Write info logs to stderr instead of to LOG file. ");
 
+DEFINE_bool(use_tiered_storage, false, "Whether to use tiered storage on levels or not."); // kaloiii-tiered
 
+DEFINE_string(tiered_storage_path, "", "Path where the levels on tiered storage will reside. Comma-separated from L0 onwards. Last entry will be used from its position up to the last level of the LSM-tree. Sample: {path1},{path2},{path3} will be implemented as L0 in {path1}, L1 in {path2}, and L2 to LN in {path3}"); // kaloiii-tiered
+
+DEFINE_bool(use_hybrid_compression, false, "Whether to use hybrid compression on levels or not."); // kaloiii-hcomp
+
+DEFINE_string(hybrid_compression_type, "", "Compression type to be used on each level. Comma-separated from L0 onwards. If compression type is not found, it will default to default compression Snappy. Last entry will be used from its position up to the last level of the LSM-tree. Sample: {none},{Snappy},{LZ4},{Zstd} = L0:none, L1:Snappy, L2:LZ4, L3 to LN:Zstd"); // kaloiii-hcomp
 
 DEFINE_string(trace_file, "", "Trace workload to a file. ");
 
