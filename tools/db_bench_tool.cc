@@ -4532,7 +4532,7 @@ class Benchmark {
           hcount++;
         }
         
-        for(int i = 0; i < FLAGS_num_levels; i++) {
+        
           if(i < static_cast<int>(sizeof(htmp))){  
             options.compression_per_level[i] = htmp[i];
           } else{
