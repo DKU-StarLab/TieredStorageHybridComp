@@ -644,7 +644,9 @@ DEFINE_int32(ops_between_duration_checks, 1000,
 DEFINE_bool(pin_l0_filter_and_index_blocks_in_cache, false,
             "Pin index/filter blocks of L0 files in block cache.");
 
-
+DEFINE_bool(
+    pin_top_level_index_and_filter, false,
+    "Pin top-level index of partitioned index/filter blocks in block cache.");
 
 DEFINE_int32(block_size,
              static_cast<int32_t>(
