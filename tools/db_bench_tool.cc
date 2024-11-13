@@ -8600,14 +8600,7 @@ int db_bench_tool(int argc, char** argv) {
     exit(0);
   }
 
-  if (!FLAGS_seed) {
-    uint64_t now = FLAGS_env->GetSystemClock()->NowMicros();
-    seed_base = static_cast<int64_t>(now);
-    fprintf(stdout, "Set seed to %" PRIu64 " because --seed was 0\n",
-            *seed_base);
-  } else {
-    seed_base = FLAGS_seed;
-  }
+  
 
   if (FLAGS_use_existing_keys && !FLAGS_use_existing_db) {
     fprintf(stderr,
