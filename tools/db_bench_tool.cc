@@ -696,8 +696,7 @@ DEFINE_double(data_block_hash_table_util_ratio, 0.75,
               "This is only valid if use_data_block_hash_index is "
               "set to true");
 
-DEFINE_int64(compressed_cache_size, -1,
-             "Number of bytes to use as a cache of compressed data.");
+
 
 DEFINE_int64(row_cache_size, 0,
              "Number of bytes to use as a cache of individual rows"
