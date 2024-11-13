@@ -4081,6 +4081,21 @@ class Benchmark {
         int xindex = 0;
         long long tsize[FLAGS_num_levels];
         long long xbaseSize =  1073741824;
+        while (getline(xstream, xtoken, ',')) {
+          if(xtoken!=""){
+            tpaths[xindex] = xtoken;
+            if(xindex==0) {
+              tsize[xindex] = 1 * xbaseSize;
+            } else if(xindex==1) {
+              tsize[xindex] = 10 * xbaseSize;
+            } else if(xindex==2) {
+              tsize[xindex] = 100 * xbaseSize;
+            } else {
+              tsize[xindex] = 500 * xbaseSize;
+            }
+            xindex++;
+          }
+        }
         
       }
     } // kaloiii end
